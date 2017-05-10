@@ -41,9 +41,15 @@ class TestDummy(unittest.TestCase):
         self.assertIsNone(weekday5)
 
 
-    def test_edge_cases(self):
+    def test_calculate_edge_cases(self):
         weekday = calculate(1, 1, 1)
         self.assertEqual(weekday, 5)     # Apparently it's a saturday
+
+        weekday2 = calculate(2012, 2, 29)
+        self.assertEqual(weekday2, 2)    # Leap year check
+
+        weekday3 = calculate(2011, 2, 29)
+        self.assertIsNone(weekday3)     # Non-leap year check
 
     def test_arg_parsing(self):
         self.assertRaises(
